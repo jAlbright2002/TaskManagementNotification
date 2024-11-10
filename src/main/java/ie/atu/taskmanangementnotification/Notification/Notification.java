@@ -1,11 +1,10 @@
-package ie.atu.taskmanangementnotification;
+package ie.atu.taskmanangementnotification.Notification;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.Date;
 
 @Data
 @Document(collection = "notifications")
@@ -19,11 +18,11 @@ public class Notification {
     @NotEmpty
     private String message;
 
-    @NotEmpty
-    private Date dateOfAction;
+    private String dateOfAction;
 
     @NotEmpty
     private String email;
 
+    @JsonProperty("isRead")
     private boolean isRead;
 }
