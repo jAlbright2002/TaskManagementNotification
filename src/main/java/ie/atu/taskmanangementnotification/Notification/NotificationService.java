@@ -1,5 +1,7 @@
 package ie.atu.taskmanangementnotification.Notification;
 
+import ie.atu.taskmanangementnotification.RabbitMQConfig;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,11 @@ import java.util.Optional;
 public class NotificationService {
 
     private final NotificationDb notiDb;
+    private final RabbitTemplate rabbitTemplate;
 
-    public NotificationService(NotificationDb notiDb) {
+    public NotificationService(NotificationDb notiDb, RabbitTemplate rabbitTemplate) {
         this.notiDb = notiDb;
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     public ResponseEntity<List<Notification>> getAllNotificationsForUser(String email) {
@@ -32,6 +36,11 @@ public class NotificationService {
     public ResponseEntity<Notification> createNotification(Notification notif) {
         notif.setDateOfAction(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         return ResponseEntity.ok(notiDb.save(notif));
+    }
+
+    public ResponseEntity<String> sendNotificationToRegistration(Notification notif) {
+        rabbitTemplate.convertAndSend(RabbitMQConfig.NOTIFICATION_QUEUE, "notification.new", notif);
+        return ResponseEntity.ok("Sent notification to registration service");
     }
 
 }

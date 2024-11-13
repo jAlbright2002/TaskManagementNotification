@@ -24,4 +24,9 @@ public class NotificationController {
         return notiService.createNotification(notif);
     }
 
+    @PostMapping("/sendNotification")
+    public ResponseEntity<String> sendNotification(@RequestBody Notification notif) {
+        return notiService.sendNotificationToRegistration(notif);
+    }
+
 }
