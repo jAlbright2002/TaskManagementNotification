@@ -1,5 +1,6 @@
 package ie.atu.taskmanangementnotification.Notification;
 
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +30,14 @@ public class NotificationService {
         }
     }
 
-    public ResponseEntity<Notification> createNotification(Notification notif) {
-        notif.setDateOfAction(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
-        return ResponseEntity.ok(notiDb.save(notif));
+    @RabbitListener(queues = "userNotificationQueue")
+    public void createUserNotification(User user) {
+        Notification newNotif = new Notification();
+        newNotif.setEmail(user.getEmail());
+        newNotif.setDateOfAction(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        System.out.println(newNotif);
+        //return newNotif;
+        //return ResponseEntity.ok(notiDb.save(newNotif));
     }
 
 }
