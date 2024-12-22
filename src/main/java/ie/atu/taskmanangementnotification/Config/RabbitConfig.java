@@ -33,6 +33,31 @@ public class RabbitConfig {
     }
 
     @Bean
+    public Queue createTaskSendNotificationQueue() {
+        return new Queue("createTaskSendNotificationQueue", false);
+    }
+
+    @Bean
+    public Queue updateTaskRecNotificationQueue() {
+        return new Queue("updateTaskRecNotificationQueue", false);
+    }
+
+    @Bean
+    public Queue updateTaskSendNotificationQueue() {
+        return new Queue("updateTaskSendNotificationQueue", false);
+    }
+
+    @Bean
+    public Queue deleteTaskRecNotificationQueue() {
+        return new Queue("deleteTaskRecNotificationQueue", false);
+    }
+
+    @Bean
+    public Queue deleteTaskSendNotificationQueue() {
+        return new Queue("deleteTaskSendNotificationQueue", false);
+    }
+
+    @Bean
     public Jackson2JsonMessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();
     }
