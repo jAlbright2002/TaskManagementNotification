@@ -60,4 +60,30 @@ public class NotificationService {
         rabbitTemplate.convertAndSend("logRecNotificationQueue", notification);
     }
 
+    @RabbitListener(queues = "deleteTaskSendNotificationQueue")
+    public void saveDeleteTaskNotification(Notification notification) {
+        notification.setDateOfAction(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        notification.setMessage("Task deleted successfully");
+        notiDb.save(notification);
+        System.out.println(notification);
+        rabbitTemplate.convertAndSend("deleteTaskRecNotificationQueue", notification);
+    }
+
+    @RabbitListener(queues = "updateTaskSendNotificationQueue")
+    public void saveUpdateTaskNotification(Notification notification) {
+        notification.setDateOfAction(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        notification.setMessage("Task updated successfully");
+        notiDb.save(notification);
+        System.out.println(notification);
+        rabbitTemplate.convertAndSend("updateTaskRecNotificationQueue", notification);
+    }
+
+    @RabbitListener(queues = "createTaskSendNotificationQueue")
+    public void saveCreateTaskNotification(Notification notification) {
+        notification.setDateOfAction(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        notification.setMessage("Task created successfully");
+        notiDb.save(notification);
+        System.out.println(notification);
+        rabbitTemplate.convertAndSend("createTaskRecNotificationQueue", notification);
+    }
 }
