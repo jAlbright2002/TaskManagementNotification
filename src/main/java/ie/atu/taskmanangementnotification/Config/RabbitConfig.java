@@ -38,6 +38,11 @@ public class RabbitConfig {
     }
 
     @Bean
+    public Queue createTaskRecNotificationQueue() {
+        return new Queue("createTaskRecNotificationQueue", false);
+    }
+
+    @Bean
     public Queue updateTaskRecNotificationQueue() {
         return new Queue("updateTaskRecNotificationQueue", false);
     }
