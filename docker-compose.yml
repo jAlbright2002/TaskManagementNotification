@@ -27,7 +27,7 @@ services:
     networks:
       - my_network
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/userdb
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/tasksdb
       - SPRING_RABBITMQ_HOST=rabbitmq
 
   mongo:
