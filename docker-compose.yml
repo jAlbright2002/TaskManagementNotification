@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   task-mgnt-noti:
-    image: br0kestudent/task-mgnt-noti:latest
+    image: br0kestudent/task_mgnt_noti:latest
     ports:
       - "8080:8080"
     networks:
@@ -11,7 +11,7 @@ services:
       - SPRING_RABBITMQ_HOST=rabbitmq
 
   task-mgnt-reg:
-    image: br0kestudent/task-mgnt-reg:latest
+    image: br0kestudent/task_mgnt_reg:latest
     ports:
       - "8081:8081"
     networks:
