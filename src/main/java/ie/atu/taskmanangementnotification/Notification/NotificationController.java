@@ -19,9 +19,4 @@ public class NotificationController {
         return notiService.getAllNotificationsForUser(email);
     }
 
-    @PostMapping("/createNotification")
-    public ResponseEntity<Notification> createNotification(@RequestBody Notification notif) {
-        return notiService.createNotification(notif);
-    }
-
 }
