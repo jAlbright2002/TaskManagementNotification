@@ -13,56 +13,6 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitConfig {
 
     @Bean
-    public Queue logSendNotificationQueue() {
-        return new Queue("logSendNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue logRecNotificationQueue() {
-        return new Queue("logRecNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue regRecNotificationQueue() {
-        return new Queue("regRecNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue regSendNotificationQueue() {
-        return new Queue("regSendNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue createTaskSendNotificationQueue() {
-        return new Queue("createTaskSendNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue createTaskRecNotificationQueue() {
-        return new Queue("createTaskRecNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue updateTaskRecNotificationQueue() {
-        return new Queue("updateTaskRecNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue updateTaskSendNotificationQueue() {
-        return new Queue("updateTaskSendNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue deleteTaskRecNotificationQueue() {
-        return new Queue("deleteTaskRecNotificationQueue", false);
-    }
-
-    @Bean
-    public Queue deleteTaskSendNotificationQueue() {
-        return new Queue("deleteTaskSendNotificationQueue", false);
-    }
-
-    @Bean
     public Jackson2JsonMessageConverter jsonMessageConverter() {
         return new Jackson2JsonMessageConverter();
     }

@@ -9,6 +9,8 @@ services:
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/notifdb
       - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - rabbitmq
 
   task-mgnt-reg:
     image: br0kestudent/task_mgnt_reg:latest
@@ -19,6 +21,8 @@ services:
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/userdb
       - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - rabbitmq
 
   task-mgnt-service:
     image: br0kestudent/task_mgnt_service:latest
@@ -29,6 +33,8 @@ services:
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/tasksdb
       - SPRING_RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - rabbitmq
 
   mongo:
     image: mongo:5.0
