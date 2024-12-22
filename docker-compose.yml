@@ -20,6 +20,16 @@ services:
       - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/userdb
       - SPRING_RABBITMQ_HOST=rabbitmq
 
+  task-mgnt-service:
+    image: br0kestudent/task_mgnt_service:latest
+    ports:
+      - "8082:8082"
+    networks:
+      - my_network
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongo:27017/userdb
+      - SPRING_RABBITMQ_HOST=rabbitmq
+
   mongo:
     image: mongo:5.0
     container_name: mongo
