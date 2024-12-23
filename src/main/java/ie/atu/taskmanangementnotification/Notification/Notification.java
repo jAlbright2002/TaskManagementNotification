@@ -1,6 +1,7 @@
 package ie.atu.taskmanangementnotification.Notification;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,7 @@ public class Notification {
     @Id
     private String id;
 
+    @NotEmpty
     private String actionType;
 
     @NotEmpty
@@ -22,7 +24,7 @@ public class Notification {
 
     private String dateOfAction;
 
-    @NotEmpty
+    @Email
     private String email;
 
     @JsonProperty("isRead")
