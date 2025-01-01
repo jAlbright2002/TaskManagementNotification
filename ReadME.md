@@ -25,9 +25,9 @@ Run the following command, this will pull and run the docker images for the proj
 	docker-compose up
 
 
-The project will now be running and you can access its [endpoint](http://localhost:8080/allNotifs/{email})
+The project will now be running and you can access its [endpoint](http://localhost:8080/allNotifs/email)
 
-Replace **{email}** with an email registered using the Task Registration Service 
+Replace **email** with an email registered using the Task Registration Service 
 
 It is recommended to use an API testing tool such as [Postman](https://www.postman.com/downloads/) or [Talend API Extension](https://chromewebstore.google.com/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm) 
 (Note: Must use a Chromium based browser to use this extension)
