@@ -39,7 +39,6 @@ The **Task Management Notification Service** is built to send notifications when
 
 	.\mvnw verify
 
-
 This will test all unit and integration tests
 
 ## Authors
