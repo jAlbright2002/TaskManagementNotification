@@ -24,7 +24,6 @@ Run the following command, this will pull and run the docker images for the proj
 
 	docker-compose up
 
-
 The project will now be running and you can access its [endpoint](http://localhost:8080/allNotifs/email)
 
 Replace **email** with an email registered using the Task Registration Service 
@@ -39,6 +38,7 @@ The **Task Management Notification Service** is built to send notifications when
 [Download](https://github.com/jAlbright2002/TaskManagementNotification.git) and open the project in an IDE or locate the root directory within your terminal and run the following command
 
 	.\mvnw verify
+
 
 This will test all unit and integration tests
 
